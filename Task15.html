@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Діапазон</title>
+  <link rel="stylesheet" href="css/Task.css" />
+    <style>
+    .board {
+      min-height: 0;
+    }
+    .content {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <div class="brand">
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas"  id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task2.html" class="task-link">Порівняння чисел</a></li>
+            <li class="task"><a href="Task3.html" class="task-link">Вгадайте число</a></li>
+            <li class="task"><a href="Task7.html" class="task-link">Аналіз числа</a></li>
+            <li class="task"><a href="Task8.html" class="task-link">Квадратні рівняння</a></li>
+            <li class="task"><a href="Task9.html" class="task-link">Трикутник</a></li>
+            <li class="task"><a href="Task10.html" class="task-link">Факторіал</a></li>
+            <li class="task"><a href="Task12.html" class="task-link">Таблиця множення</a></li>
+            <li class="task"><a href="Task15.html" class="task-link">Діапазон</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content"> 
+<!-- сума чисел у діапазоні -->
+        <header class="content-header">
+          <h1>Сума чисел у діапазоні від 0 до 1</h1>
+          <p class="task-desc">Введіть два числа, кожне більше 0 та менше 1.</p>
+        </header>
+
+        <div class="controls-dual">
+          <input id="numA" type="number" step="0.01" class="input" placeholder="Перше число">
+          <input id="numB" type="number" step="0.01" class="input" placeholder="Друге число">
+          <button class="btn" onclick="checkSum()">Обчислити</button>
+        </div>
+
+        <div class="result-area" id="resultBox">
+          <p id="result" class="placeholder">Результат з’явиться тут</p>
+        </div>
+
+<!-- парні і не парні в діапазоні --> 
+        <header class="content-header">
+          <h1>Парні та непарні числа</h1>
+          <p class="task-desc">Введіть діапазон чисел, щоб побачити всі парні та непарні числа окремо.</p>
+        </header>
+
+        <div class="controls-dual">
+          <input id="rangeMin" type="number" class="input" placeholder="Мінімальне число">
+          <input id="rangeMax" type="number" class="input" placeholder="Максимальне число">
+          <button class="btn" onclick="showEvenOdd()">Показати</button>
+        </div>
+
+        <div class="result-area" id="resultBox">
+          <div id="evenNumbers" class="placeholder">Парні числа з’являться тут</div>
+        </div>
+        <div class="result-area" id="resultBox">
+          <div id="oddNumbers" class="placeholder">Непарні числа з’являться тут</div>
+        </div>
+      </section>
+
+
+      <script> 
+//сума чисел у діапазоні
+        function checkSum() {
+          const nmb1 = +document.getElementById("numA").value;
+          const nmb2 = +document.getElementById("numB").value;
+          let resultText = "";
+
+          if ((nmb1 > 0 && nmb1 < 1) && (nmb2 > 0 && nmb2 < 1)) {
+            const sum = nmb1 + nmb2;
+            resultText = "Сума дорівнює: " + sum;
+          } else {
+            resultText = "Одне з чисел не входить у діапазон (0, 1).";
+          }
+
+          document.getElementById("result").innerText = resultText;
+        }
+
+// парні і не парні в діапазоні
+        function showEvenOdd() {
+          const min = +document.getElementById("rangeMin").value;
+          const max = +document.getElementById("rangeMax").value;
+
+          if (isNaN(min) || isNaN(max) || min >= max) {
+            document.getElementById("evenNumbers").innerText = "Введіть коректний діапазон!";
+            document.getElementById("oddNumbers").innerText = "";
+            return;
+          }
+
+          let evens = [];
+          let odds = [];
+
+          for (let i = min; i <= max; i++) {
+            if (i % 2 === 0) {
+              evens.push(i);
+            } else {
+              odds.push(i);
+            }
+          }
+
+          document.getElementById("evenNumbers").innerText = "Парні числа: " + evens.join(", ");
+          document.getElementById("oddNumbers").innerText = "Непарні числа: " + odds.join(", ");
+        }
+      </script>
+    </body>
+</html>
+

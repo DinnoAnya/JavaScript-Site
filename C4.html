@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="css/Canvas.css">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .gallery canvas {
+      border: 2px solid #333;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <ul class="task-list">
+          <li class="task"><a href="C1.html" class="task-link">Шахівниця</a></li>
+          <li class="task"><a href="C2.html" class="task-link">Квадрати</a></li>
+          <li class="task"><a href="C3.html" class="task-link">Драбина квадартів</a></li>
+          <li class="task"><a href="C4.html" class="task-link">Галерея фігур</a></li>
+          <li class="task"><a href="C5.html" class="task-link">Просто</a></li>
+          <li class="task"><a href="C6.html" class="task-link">Картина</a></li>
+        </ul>
+      </aside>
+
+      <section class="content">
+        <h1>Галерея фігур - якщо оновлювати сторінку, фігури будуть рандомно змінювати своє положення</h1>
+        <div class="gallery">
+          <canvas id="canvas1" width="250" height="250"></canvas>
+          <canvas id="canvas2" width="250" height="250"></canvas>
+          <canvas id="canvas3" width="250" height="250"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    let c1 = document.getElementById("canvas1").getContext("2d");
+    for (let i = 0; i < 50; i++) {
+      let size = 10 + Math.random() * 40;
+      let x = Math.random() * (300 - size);
+      let y = Math.random() * (300 - size);
+      let blueShade = `rgb(${Math.floor(Math.random()*100)}, ${Math.floor(Math.random()*150+100)}, 255)`;
+      c1.fillStyle = blueShade;
+      c1.fillRect(x, y, size, size);
+    }
+
+    let c2 = document.getElementById("canvas2").getContext("2d");
+    for (let i = 0; i < 50; i++) {
+      let radius = 5 + Math.random() * 30;
+      let x = Math.random() * (300 - radius*2) + radius;
+      let y = Math.random() * (300 - radius*2) + radius;
+      let violetShade = `rgb(${150+Math.floor(Math.random()*100)}, ${0+Math.floor(Math.random()*80)}, ${150+Math.floor(Math.random()*100)})`;
+      c2.fillStyle = violetShade;
+      c2.beginPath();
+      c2.arc(x, y, radius, 0, Math.PI*2);
+      c2.fill();
+    }
+
+    let c3 = document.getElementById("canvas3").getContext("2d");
+    for (let i = 0; i < 50; i++) {
+      let size = 20 + Math.random() * 40;
+      let x = Math.random() * (300 - size);
+      let y = Math.random() * (300 - size);
+      let pinkShade = `rgb(255, ${100+Math.floor(Math.random()*100)}, ${150+Math.floor(Math.random()*100)})`;
+      c3.fillStyle = pinkShade;
+      c3.beginPath();
+
+      let angle = Math.random() * Math.PI * 2;
+      c3.moveTo(x + size * Math.cos(angle), y + size * Math.sin(angle));
+      c3.lineTo(x + size * Math.cos(angle + 2*Math.PI/3), y + size * Math.sin(angle + 2*Math.PI/3));
+      c3.lineTo(x + size * Math.cos(angle + 4*Math.PI/3), y + size * Math.sin(angle + 4*Math.PI/3));
+      c3.closePath();
+      c3.fill();
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Компліменти</title>
+  <link rel="stylesheet" href="css/Task.css" />
+  <style>
+    .board {
+      min-height: 0;
+    }
+    .content {
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas"  id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task1.html" class="task-link">Принцеси</a></li>
+            <li class="task"><a href="Task4.html" class="task-link">Сезон</a></li>
+            <li class="task"><a href="Task5.html" class="task-link">Вікторина</a></li>
+            <li class="task"><a href="Task6.html" class="task-link">Ялинка</a></li>
+            <li class="task"><a href="Task11.html" class="task-link">Населення</a></li>
+            <li class="task"><a href="Task13.html" class="task-link">Алфавіт</a></li>
+            <li class="task"><a href="Task14.html" class="task-link">Компліменти</a></li>
+            <li class="task"><a href="Task16.html" class="task-link">Слава Україні</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="content-header">
+          <h1>Компліменти</h1>
+          <p class="task-desc">Введіть кількість компліментів, які хочете отримати.</p>
+        </header>
+
+        <div class="controls">
+          <input id="complimentCount" type="number" class="input" placeholder="Скільки компліментів?" min="1">
+          <button class="btn" onclick="generateCompliments()">Згенерувати</button>
+        </div>
+
+        <div class="result-area" id="resultBox">
+          <div id="complimentResult" class="placeholder">Результат з’явиться тут</div>
+        </div>
+      </section>
+
+      <script>
+        const compliments = ["smart","creative","strong","brave","helpful","clever","skilled","focused","talented","reliable", "calm","sharp","bright","kind","honest","patient","curious","polite","confident","ambitious", "friendly","responsible","energetic","hardworking","organized","thoughtful","adaptive","determined","fair"];
+        const animals = ["owl","bat","bee","ox","cat","dog","cow","pig","leopard","lion","eel","duck","lobster","crab","dracula fish","angel fish","fish","urchin","shark","dolphin","goode","whale","pirancha","frog","otter","monkey","panda","bear","wolf","fox","horse","capybara","tiger","buffalo","snake","bandicoot","parrot","ant","chicken","mouse","mangoose","mosquito","coyote","zebra","tapir","bird","pony","puma", "snow puma","meerkat","snail","orea","starfish","pelican","flamingo","penguin","turtle","axolotl","squid","kraken","octupus","lemur","crocodile","hippo","elephant","rabbit","T-Rex","seahorse","dragon","unicorn","griffin","spider"];
+        const colors = ["#000000","#FF0000","#00FF00","#0000FF","#FFFF00","#FF00FF","#00FFFF","#FFA500","#800080","#008000", "#A52A2A","#808080","#FFC0CB","#FFD700","#ADD8E6","#87CEEB","#2F4F4F","#DC143C","#20B2AA","#4169E1", "#FF4500","#DA70D6","#EEE8AA","#98FB98","#AFEEEE","#DB7093","#FFE4B5","#6A5ACD","#708090","#4682B4", "#D2B48C","#008080","#D8BFD8","#FF6347","#40E0D0","#EE82EE","#F5DEB3","#9ACD32","#B22222","#5F9EA0", "#6495ED","#DEB887","#556B2F","#8B008B","#9932CC","#8B0000","#E9967A","#8FBC8F","#483D8B","#2E8B57", "#BDB76B","#FF8C00","#9932CC","#8B4513","#6B8E23","#CD5C5C","#4B0082","#7B68EE","#00CED1","#9400D3", "#FF1493","#00BFFF","#696969","#1E90FF","#B8860B","#228B22","#FFDAB9","#CD853F","#B0C4DE","#32CD32", "#FA8072","#F08080","#F0E68C","#E6E6FA","#F0FFF0","#F0FFFF","#F5F5DC","#F5F5F5","#F5FFFA","#F8F8FF", "#FAEBD7","#FAF0E6","#FAFAD2","#FDF5E6","#FFE4E1","#FFEBCD","#FFEFD5","#FFF0F5","#FFF5EE","#FFF8DC", "#FFFACD","#FFFDD0","#FFF0F0","#FFD1DC","#FF69B4","#FFB6C1","#FF7F50","#FF6EB4","#FF82AB","#FF91A4"];
+
+        function generateCompliments() {
+          const howMany = Number(document.getElementById("complimentCount").value);
+          let output = "";
+
+          if (isNaN(howMany) || howMany <= 0) {
+            output = "Введіть додатне число!";
+          } else {
+            for (let i = 0; i < howMany; i++) {
+              let randAnimal = Math.floor(Math.random() * animals.length);
+              let randCompliment = Math.floor(Math.random() * compliments.length);
+              let randColorBg = colors[Math.floor(Math.random() * colors.length)];
+              let randColorText = colors[Math.floor(Math.random() * colors.length)];
+              output += `<p style="color:${randColorText}; background-color:${randColorBg}; padding:6px; border-radius:6px">
+                ${i+1}) You are so ${compliments[randCompliment]}, like ${animals[randAnimal]}
+              </p>`;
+            }
+          }
+          document.getElementById("complimentResult").innerHTML = output;
+        }
+      </script>
+    </body>
+</html>

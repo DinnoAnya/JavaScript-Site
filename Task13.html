@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Алфавіт</title>
+  <link rel="stylesheet" href="css/Task.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas"  id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task1.html" class="task-link">Принцеси</a></li>
+            <li class="task"><a href="Task4.html" class="task-link">Сезон</a></li>
+            <li class="task"><a href="Task5.html" class="task-link">Вікторина</a></li>
+            <li class="task"><a href="Task6.html" class="task-link">Ялинка</a></li>
+            <li class="task"><a href="Task11.html" class="task-link">Населення</a></li>
+            <li class="task"><a href="Task13.html" class="task-link">Алфавіт</a></li>
+            <li class="task"><a href="Task14.html" class="task-link">Компліменти</a></li>
+            <li class="task"><a href="Task16.html" class="task-link">Слава Україні</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="content-header">
+          <h1>Пошук літери в українському алфавіті</h1>
+          <p class="task-desc">Введіть українську літеру, щоб дізнатися її порядковий номер в алфавіті.</p>
+        </header>
+
+        <div class="controls">
+          <input id="letterInput" type="text" maxlength="1" class="input long-input" placeholder="Введіть літеру">
+          <button class="btn" onclick="findLetter()">Знайти</button>
+        </div>
+
+        <div class="result-area" id="resultBox">
+          <p id="letterResult" class="placeholder">Результат з’явиться тут</p>
+        </div>
+
+<!-- dfghjkhfdertyujncvxdfrtyujkbvcfg -->
+
+        <header class="content-header">
+          <h1>Literature search in the English alphabet</h1>
+          <p class="task-desc">Enter an English letter to find out its alphabetical number.</p>
+        </header>
+
+        <div class="controls">
+          <input id="letterInputEng" type="text" maxlength="1" class="input long-input" placeholder="Enter a letter">
+          <button class="btn" onclick="findLetterEng()">Find</button>
+        </div>
+
+        <div class="result-area" id="resultBoxEng">
+          <p id="letterResultEng" class="placeholder">Result will appear here</p>
+        </div>
+      </section>
+
+      <script>
+// укр алфавіт
+        const alphabet = [
+          "а","б","в","г","ґ","д","е","є","ж","з","и","і","ї","й",
+          "к","л","м","н","о","п","р","с","т","у","ф","х","ц","ч","ш","щ",
+          "ь","ю","я"
+        ];
+
+        function findLetter() {
+          const letter = document.getElementById("letterInput").value.trim().toLowerCase();
+          let result = "";
+
+          if (!letter) {
+            result = "Будь ласка, введіть літеру!";
+          } else {
+            let index = alphabet.indexOf(letter);
+            if (index !== -1) {
+              result = "Літера '" + letter + "' є " + (index + 1) + "-ю в українському алфавіті.";
+            } else {
+              result = "Такої літери немає в українському алфавіті.";
+            }
+          }
+          document.getElementById("letterResult").innerText = result;
+        }
+
+// англ алфавіт
+        const alphabetEng = [
+          "a","b","c","d","e","f","g","h","i","j","k","l","m",
+          "n","o","p","q","r","s","t","u","v","w","x","y","z"
+        ];
+
+        function findLetterEng() {
+          const letter = document.getElementById("letterInputEng").value.trim().toLowerCase();
+          let result = "";
+
+          if (!letter) {
+            result = "Please enter a letter!";
+          } else {
+            let index = alphabetEng.indexOf(letter);
+            if (index !== -1) {
+              result = "Letter '" + letter + "' is number " + (index + 1) + " in the English alphabet.";
+            } else {
+              result = "This letter isn't in the English alphabet.";
+            }
+          }
+          document.getElementById("letterResultEng").innerText = result;
+        }
+      </script>
+  </body>
+</html>

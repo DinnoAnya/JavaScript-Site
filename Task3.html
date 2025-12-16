@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Вгадайте число</title>
+  <link rel="stylesheet" href="css/Task.css" />
+  <style>
+    .controls-dual {
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: var(--space-2);
+      align-items: center;
+    }
+
+    #guessControls {
+      margin-top: var(--space-3);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-2);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas"  id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task2.html" class="task-link">Порівняння чисел</a></li>
+            <li class="task"><a href="Task3.html" class="task-link">Вгадайте число</a></li>
+            <li class="task"><a href="Task7.html" class="task-link">Аналіз числа</a></li>
+            <li class="task"><a href="Task8.html" class="task-link">Квадратні рівняння</a></li>
+            <li class="task"><a href="Task9.html" class="task-link">Трикутник</a></li>
+            <li class="task"><a href="Task10.html" class="task-link">Факторіал</a></li>
+            <li class="task"><a href="Task12.html" class="task-link">Таблиця множення</a></li>
+            <li class="task"><a href="Task15.html" class="task-link">Діапазон</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="content-header">
+          <h1>Гра «Вгадай число»</h1>
+          <p class="task-desc">Введіть діапазон і спробуйте відгадати число!</p>
+        </header>
+
+        <div class="controls-dual">
+          <input id="minVal" type="number" class="input" placeholder="Мінімум">
+          <input id="maxVal" type="number" class="input" placeholder="Максимум">
+          <button class="btn" onclick="startGame()">Почати гру</button>
+        </div>
+
+        <div class="controls" id="guessControls" style="display:none;">
+          <input id="userGuess" type="number" class="input" placeholder="Ваше число">
+          <button class="btn" onclick="makeGuess()">Вгадати</button>
+        </div>
+
+        <div class="result-area" id="resultBox">
+          <p id="result" class="placeholder">Результат з’явиться тут</p>
+        </div>
+      </section>
+    </div>
+  </div>
+    <script>
+      let targetNumber = null;
+      let min = null;
+      let max = null;
+      let attempts = 0;
+
+      function getWordForm(n) {
+        const lastTwo = n % 100;
+        const last = n % 10;
+
+        if (lastTwo >= 11 && lastTwo <= 14) {
+          return "спроб";
+        }
+        if (last === 1) {
+          return "спробу";
+        }
+        if (last >= 2 && last <= 4) {
+          return "спроби";
+        }
+        return "спроб";
+      }
+
+      function startGame() {
+        min = Number(document.getElementById("minVal").value);
+        max = Number(document.getElementById("maxVal").value);
+        if (isNaN(min) || isNaN(max) || min >= max) {
+          document.getElementById("result").innerText = "Будь ласка, введіть коректний діапазон!";
+          return;
+        }
+
+        targetNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+        attempts = 0;
+        document.getElementById("result").innerText = "Я загадав число від " + min + " до " + max + ". Спробуйте вгадати!";
+        document.getElementById("guessControls").style.display = "grid";
+      }
+
+      function makeGuess() {
+        const guess = Number(document.getElementById("userGuess").value);
+        if (isNaN(guess)) {
+          document.getElementById("result").innerText = "Будь ласка, введіть число!";
+          return;
+        }
+
+        attempts++;
+
+        if (guess === targetNumber) {
+          document.getElementById("result").innerText =
+            "🎉 Вітаю, ви вгадали! Загадане число дійсно " + targetNumber +
+            ". Ви вгадали за " + attempts + " " + getWordForm(attempts);
+          document.getElementById("guessControls").style.display = "none";
+        } else if (guess > targetNumber) {
+          document.getElementById("result").innerText = "Загадане число менше. Спробуйте ще раз.";
+        } else {
+          document.getElementById("result").innerText = "Загадане число більше. Спробуйте ще раз.";
+        }
+      }
+    </script>
+  </body>
+</html>

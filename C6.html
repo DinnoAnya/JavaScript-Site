@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Картини</title>
+  <link rel="stylesheet" href="css/Canvas.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <ul class="task-list">
+          <li class="task"><a href="C1.html" class="task-link">Шахівниця</a></li>
+          <li class="task"><a href="C2.html" class="task-link">Квадрати</a></li>
+          <li class="task"><a href="C3.html" class="task-link">Драбина квадартів</a></li>
+          <li class="task"><a href="C4.html" class="task-link">Галерея фігур</a></li>
+          <li class="task"><a href="C5.html" class="task-link">Просто</a></li>
+          <li class="task"><a href="C6.html" class="task-link">Картина</a></li>
+        </ul>
+      </aside>
+
+      <section class="content">
+        <h1>Картинки</h1>
+        <div class="board-wrapper">
+          <canvas id="flowersCanvas" width="300" height="220"></canvas>
+        </div>
+        <div class="board-wrapper">
+          <canvas id="myCanvas" width="400" height="280"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    //1
+    const canvas1 = document.getElementById("flowersCanvas");
+    const ctx1 = canvas1.getContext("2d");
+
+    ctx1.fillStyle = "#cceeff";
+    ctx1.fillRect(0, 0, canvas1.width, canvas1.height);
+
+    // трава
+    ctx1.fillStyle = "#66cc66";
+    ctx1.fillRect(0, 180, 300, 40);
+
+    // квітка 1
+    ctx1.fillStyle = "purple";
+    for (let i = 0; i < 6; i++) {
+      let angle = (Math.PI * 2 / 6) * i;
+      let x = 80 + Math.cos(angle) * 15;
+      let y = 140 + Math.sin(angle) * 15;
+      ctx1.beginPath();
+      ctx1.arc(x, y, 8, 0, Math.PI * 2);
+      ctx1.fill();
+    }
+    ctx1.beginPath();
+    ctx1.arc(80, 140, 8, 0, Math.PI * 2);
+    ctx1.fillStyle = "yellow";
+    ctx1.fill();
+    ctx1.fillStyle = "green";
+    ctx1.fillRect(78, 150, 4, 30);
+
+    // квітка 2
+    ctx1.fillStyle = "orange";
+    for (let i = 0; i < 6; i++) {
+      let angle = (Math.PI * 2 / 6) * i;
+      let x = 220 + Math.cos(angle) * 15;
+      let y = 140 + Math.sin(angle) * 15;
+      ctx1.beginPath();
+      ctx1.arc(x, y, 8, 0, Math.PI * 2);
+      ctx1.fill();
+    }
+    ctx1.beginPath();
+    ctx1.arc(220, 140, 8, 0, Math.PI * 2);
+    ctx1.fillStyle = "yellow";
+    ctx1.fill();
+    ctx1.fillStyle = "green";
+    ctx1.fillRect(218, 150, 4, 30);
+
+    //2
+    const canvas2 = document.getElementById("myCanvas");
+    const ctx2 = canvas2.getContext("2d");
+
+    ctx2.fillStyle = "#cceeff";
+    ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
+
+    // трава
+    ctx2.fillStyle = "#66cc66";
+    ctx2.fillRect(0, 220, 400, 60);
+
+    // сонце
+    ctx2.beginPath();
+    ctx2.arc(330, 60, 30, 0, Math.PI * 2);
+    ctx2.fillStyle = "yellow";
+    ctx2.fill();
+
+    // хмарка
+    ctx2.fillStyle = "#ffffff";
+    ctx2.beginPath();
+    ctx2.arc(90, 60, 15, 0, Math.PI * 2);
+    ctx2.arc(110, 50, 20, 0, Math.PI * 2);
+    ctx2.arc(130, 60, 15, 0, Math.PI * 2);
+    ctx2.fill();
+
+    // дерево
+    ctx2.fillStyle = "#8b5a2b";
+    ctx2.fillRect(60, 170, 15, 50);
+    ctx2.beginPath();
+    ctx2.arc(68, 160, 25, 0, Math.PI * 2);
+    ctx2.fillStyle = "#228b22";
+    ctx2.fill();
+
+    // квітка
+    ctx2.fillStyle = "#ff69b4";
+    for (let i = 0; i < 5; i++) {
+      let angle = (Math.PI * 2 / 5) * i;
+      let x = 200 + Math.cos(angle) * 12;
+      let y = 200 + Math.sin(angle) * 12;
+      ctx2.beginPath();
+      ctx2.arc(x, y, 8, 0, Math.PI * 2);
+      ctx2.fill();
+    }
+    ctx2.beginPath();
+    ctx2.arc(200, 200, 6, 0, Math.PI * 2);
+    ctx2.fillStyle = "yellow";
+    ctx2.fill();
+    ctx2.fillStyle = "#006400";
+    ctx2.fillRect(198, 206, 4, 25);
+  </script>
+</body>
+</html>

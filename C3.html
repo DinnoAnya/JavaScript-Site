@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Драбина квадратів</title>
+  <link rel="stylesheet" href="css/Canvas.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <ul class="task-list">
+          <li class="task"><a href="C1.html" class="task-link">Шахівниця</a></li>
+          <li class="task"><a href="C2.html" class="task-link">Квадрати</a></li>
+          <li class="task"><a href="C3.html" class="task-link">Драбина квадартів</a></li>
+          <li class="task"><a href="C4.html" class="task-link">Галерея фігур</a></li>
+          <li class="task"><a href="C5.html" class="task-link">Просто</a></li>
+          <li class="task"><a href="C6.html" class="task-link">Картина</a></li>
+        </ul>
+      </aside>
+
+      <section class="content">
+        <h1>Драбина квадратів</h1>
+        <div class="board-wrapper">
+          <canvas id="canvas3" width="500" height="500"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    let canvas = document.getElementById("canvas3");
+    let cxt = canvas.getContext("2d");
+
+    cxt.strokeStyle = 'black';
+    cxt.lineWidth = 3;
+    cxt.fillStyle = 'pink';
+
+    let x = 15;
+    let y = 15;
+
+    for (let i = 0; i < 50; i++) {
+      cxt.strokeRect(x, y, 100, 100);
+      cxt.fillRect(x, y, 100, 100);
+      x = x + 15;
+      y = y + 15;
+    }
+  </script>
+</body>
+</html>

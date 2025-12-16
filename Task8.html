@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Task 1 — Принцеси</title>
+  <link rel="stylesheet" href="css/Task.css" />
+</head>
+<body>
+  <!-- той самий хедер -->
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar" aria-label="Навігація завдань">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task2.html" class="task-link">Порівняння чисел</a></li>
+            <li class="task"><a href="Task3.html" class="task-link">Вгадайте число</a></li>
+            <li class="task"><a href="Task7.html" class="task-link">Аналіз числа</a></li>
+            <li class="task"><a href="Task8.html" class="task-link">Квадратні рівняння</a></li>
+            <li class="task"><a href="Task9.html" class="task-link">Трикутник</a></li>
+            <li class="task"><a href="Task10.html" class="task-link">Факторіал</a></li>
+            <li class="task"><a href="Task12.html" class="task-link">Таблиця множення</a></li>
+            <li class="task"><a href="Task15.html" class="task-link">Діапазон</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="content-header">
+          <h1>Квадратне рівняння</h1>
+          <p class="task-desc">Розв'язує рівняння такого зразка: <em>a·x² + b·x + c = 0</em></p>
+        </header>
+
+        <form name="qef" onsubmit="quadratic_equation(); return false;">
+          <div class="controls-dual">
+            <input class="input" name="a" type="number" value="1" placeholder="a">
+            <input class="input" name="b" type="number" value="2" placeholder="b">
+            <input class="input" name="c" type="number" value="-3" placeholder="c">
+            <button class="btn" type="submit">Розрахувати</button>
+          </div>
+          <div class="controls-single">
+            <input class="btn" type="reset" value="Скинути">
+          </div>
+        </form>
+
+        <div class="result-area" id="resultBox">
+          <p id="qe_sol" class="placeholder">Введіть коефіцієнти та натисніть «Розрахувати»</p>
+        </div>
+      </section>
+
+      <script>
+        function quadratic_equation() {
+          let a = +document.qef.a.value;
+          let b = +document.qef.b.value;
+          let c = +document.qef.c.value;
+          let d = b*b - 4*a*c;
+          let sol = "";
+
+          if (d > 0) {
+            let x1 = (-b + Math.sqrt(d)) / (2*a);
+            let x2 = (-b - Math.sqrt(d)) / (2*a);
+            sol = `Два розв'язки: x1 = ${x1.toFixed(2)}, x2 = ${x2.toFixed(2)}`;
+          } else if (d === 0) {
+            let x = -b / (2*a);
+            sol = `Один розв'язок: x = ${x.toFixed(2)}`;
+          } else {
+            sol = "Розв'язків немає (комплексні числа не підтримуються)";
+          }
+
+          document.getElementById("qe_sol").innerText = sol;
+        }
+      </script>
+    </body>
+  </html>

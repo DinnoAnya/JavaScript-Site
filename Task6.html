@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ялинка</title>
+  <link rel="stylesheet" href="css/Task.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas"  id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task1.html" class="task-link">Принцеси</a></li>
+            <li class="task"><a href="Task4.html" class="task-link">Сезон</a></li>
+            <li class="task"><a href="Task5.html" class="task-link">Вікторина</a></li>
+            <li class="task"><a href="Task6.html" class="task-link">Ялинка</a></li>
+            <li class="task"><a href="Task11.html" class="task-link">Населення</a></li>
+            <li class="task"><a href="Task13.html" class="task-link">Алфавіт</a></li>
+            <li class="task"><a href="Task14.html" class="task-link">Компліменти</a></li>
+            <li class="task"><a href="Task16.html" class="task-link">Слава Україні</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="content-header">
+          <h1>Ялинка з символів</h1>
+          <p class="task-desc">Введіть символ та кількість — і побудуйте свою ялинку! Тут легко зламати принцип роботи тому не обирайте великі числа. </p>
+        </header>
+
+        <div class="controls-dual">
+          <input id="symbolInput" type="text" class="input" placeholder="Символ (наприклад *, 🎄, 😊)">
+          <input id="countInput" type="number" class="input" placeholder="Кількість у нижньому рядку">
+          <button class="btn" onclick="buildTree()">Побудувати</button>
+        </div>
+
+        <div class="result-area" id="treeBox">
+          <p class="placeholder">Тут з’явиться ваша ялинка</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function buildTree() {
+      const symbol = document.getElementById("symbolInput").value || "*";
+      const how = Number(document.getElementById("countInput").value);
+
+      if (isNaN(how) || how <= 0) {
+        document.getElementById("treeBox").innerText = "Будь ласка, введіть коректне число!";
+        return;
+      }
+
+      let line = symbol;
+      let tree = "";
+
+      for (let i = 1; i <= how; i++) {
+        // робимо відступи для центрування
+        const spaces = " ".repeat(how - i);
+        tree += spaces + line + "\n";
+        line += symbol;
+      }
+      document.getElementById("treeBox").innerText = tree;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Вікторина</title>
+  <link rel="stylesheet" href="css/Task.css" />
+  <style>
+    .input {
+      width: 100%;
+      height: 44px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #e0e0e0;
+      font-size: 15px;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task1.html" class="task-link">Принцеси</a></li>
+            <li class="task"><a href="Task4.html" class="task-link">Сезон</a></li>
+            <li class="task"><a href="Task5.html" class="task-link">Вікторина</a></li>
+            <li class="task"><a href="Task6.html" class="task-link">Ялинка</a></li>
+            <li class="task"><a href="Task11.html" class="task-link">Населення</a></li>
+            <li class="task"><a href="Task13.html" class="task-link">Алфавіт</a></li>
+            <li class="task"><a href="Task14.html" class="task-link">Компліменти</a></li>
+            <li class="task"><a href="Task16.html" class="task-link">Слава Україні</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+    <section class="content">
+      <header class="content-header">
+        <h1>Вікторина Disney</h1>
+        <p class="task-desc">Відповідайте на запитання! Відповідь на кожне питання перевіряється окремо, по черзі. На два останні питання ви можете пробувати декілька разів дати відповіді. У всіх інших при першій же перевірці вам надасть правильну відповідь.</p>
+      </header>
+
+      <div class="controls">
+        <input id="heroName" type="text" class="input" placeholder="Яка принцеса Disney мала чарівне волосся, яке світиться і лікує?">
+        <button class="btn" onclick="checkHero()">Перевірити</button>
+      </div>
+
+      <div class="controls">
+        <input id="movieName" type="text" class="input" placeholder="Хто з героїнь Disney подорожував океаном разом із напівбогом Мауї?">
+        <button class="btn" onclick="checkMovie()">Перевірити</button>
+      </div>
+
+      <div class="controls">
+        <input id="animalHero" type="text" class="input" placeholder="Як звати вірного друга Аладіна - маленьку мавпочку?">
+        <button class="btn" onclick="checkAnimal()">Перевірити</button>
+      </div>
+
+      <div class="controls">
+        <input id="sidekick" type="text" class="input" placeholder="Як звати лева, який став королем у мультфільмі «Король Лев»?">
+        <button class="btn" onclick="checkSidekick()">Перевірити</button>
+      </div>
+
+      <div class="controls">
+        <input id="spaceYear" type="number" class="input" placeholder="Рік першого польоту у космос">
+        <button class="btn" onclick="checkSpace()">Перевірити</button>
+      </div>
+
+      <div class="controls">
+        <input id="movieYear" type="number" class="input" placeholder="Рік першого повнометражного фільму Disney">
+        <button class="btn" onclick="checkMovieYear()">Перевірити</button>
+      </div>
+
+      <div class="result-area" id="resultBox">
+        <p id="result" class="placeholder">Результати з’являться тут</p>
+      </div>
+    </section>
+
+    <script>
+      function checkHero() {
+        const heroName = document.getElementById("heroName").value.trim();
+        let message = "";
+        if (heroName.toLowerCase() === "рапунцель") {
+          message = "Вірно! Молодець!";
+        } else {
+          message = "Помилочка! Правильна відповідь: Рапунцель";
+        }
+        document.getElementById("result").innerText = message;
+      }
+
+      function checkMovie() {
+        const movieName = document.getElementById("movieName").value.trim();
+        let message = "";
+        if (movieName.toLowerCase() === "моана" || movieName.toLowerCase() === "ваяна") {
+          message = "Вірно! Молодець!";
+        } else {
+          message = "Помилочка! Правильна відповідь: Моана або Ваяна";
+        }
+        document.getElementById("result").innerText = message;
+      }
+
+      function checkAnimal() {
+        const animalHero = document.getElementById("animalHero").value.trim();
+        let message = "";
+        if (animalHero.toLowerCase() === "абу") {
+          message = "Вірно! Молодець!";
+        } else {
+          message = "Помилочка! Правильна відповідь: Абу";
+        }
+        document.getElementById("result").innerText = message;
+      }
+
+      function checkSidekick() {
+        const sidekick = document.getElementById("sidekick").value.trim();
+        let message = "";
+        if (sidekick.toLowerCase() === "симба") {
+          message = "Вірно! Молодець!";
+        } else {
+          message = "Помилочка! Правильна відповідь: Симба";
+        }
+        document.getElementById("result").innerText = message;
+      }
+
+      function checkSpace() {
+  const spaceYear = document.getElementById("spaceYear").value.trim();
+  let message = "";
+
+  if (spaceYear === "") {
+    message = "Будь ласка, введіть рік!";
+  } else if (isNaN(spaceYear)) {
+    message = "Ви ввели не число!";
+  } else if (Number(spaceYear) == 1961) {
+    message = "Вірно, ти молодець! Перша людина полетіла у космос у 1961 році.";
+  } else if (Number(spaceYear) > 1961) {
+    message = " Ні, в цей час вже літали!";
+    } else if (Number(spaceYear) < 1961) {
+    message = " Ні, в цей час ще не літали!";
+  } else {
+    message = "Ви помилилися. Перший успішний політ був у 1961 році!";
+  }
+
+  document.getElementById("result").innerText = message;
+}
+
+function checkMovieYear() {
+  const movieYear = document.getElementById("movieYear").value.trim();
+  let message = "";
+
+  if (movieYear === "") {
+    message = "Будь ласка, введіть рік!";
+  } else if (isNaN(movieYear)) {
+    message = "Ви ввели не число! Спробуйте ще раз.";
+  } else if (Number(movieYear) == 1937) {
+    message = "Вірно! Перший повнометражний фільм Disney — «Білосніжка і сім гномів» (1937).";
+  } else if (Number(movieYear) > 1937) {
+    message = "Ні, фільм вийшов раніше! Спробуйте ще раз.";
+  } else {
+    message = "Ні, фільм вийшов пізніше! Спробуйте ще раз.";
+  }
+
+  document.getElementById("result").innerText = message;
+}
+
+    </script>
+  </body>
+</html>

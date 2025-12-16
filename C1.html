@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Шахівниця</title>
+  <link rel="stylesheet" href="css/Canvas.css">
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <ul class="task-list">
+          <li class="task"><a href="C1.html" class="task-link">Шахівниця</a></li>
+          <li class="task"><a href="C2.html" class="task-link">Квадрати</a></li>
+          <li class="task"><a href="C3.html" class="task-link">Драбина квадартів</a></li>
+          <li class="task"><a href="C4.html" class="task-link">Галерея фігур</a></li>
+          <li class="task"><a href="C5.html" class="task-link">Просто</a></li>
+          <li class="task"><a href="C6.html" class="task-link">Картина</a></li>
+        </ul>
+      </aside>
+
+      <section class="content">
+        <h1>Шахівниця</h1>
+        <div class="board-wrapper">
+          <canvas id="chessboard" width="300" height="300"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    let canvas = document.getElementById("chessboard");
+    let cxt = canvas.getContext('2d');
+
+    canvas.width = 450;
+    canvas.height = 450;
+    cxt.scale(1.5, 1.5);
+
+    cxt.strokeRect(15, 15, 266, 266);
+    cxt.strokeRect(18, 18, 260, 260);
+    cxt.fillRect(20, 20, 256, 256);
+
+    for (let i = 0; i < 8; i += 2) {
+      for (let j = 0; j < 8; j += 2) {
+        cxt.clearRect(20 + i * 32, 20 + j * 32, 32, 32);
+        cxt.clearRect(20 + (i + 1) * 32, 20 + (j + 1) * 32, 32, 32);
+      }
+    }
+  </script>
+</body>
+</html>

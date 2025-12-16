@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Квадрати</title>
+  <link rel="stylesheet" href="css/Canvas.css">
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas" id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <ul class="task-list">
+          <li class="task"><a href="C1.html" class="task-link">Шахівниця</a></li>
+          <li class="task"><a href="C2.html" class="task-link">Квадрати</a></li>
+          <li class="task"><a href="C3.html" class="task-link">Драбина квадартів</a></li>
+          <li class="task"><a href="C4.html" class="task-link">Галерея фігур</a></li>
+          <li class="task"><a href="C5.html" class="task-link">Просто</a></li>
+          <li class="task"><a href="C6.html" class="task-link">Картина</a></li>
+        </ul>
+      </aside>
+
+      <section class="content">
+      <h2 id="task1">Квадратики</h2>
+      <div class="board-wrapper">
+        <canvas id="canvas1" width="300" height="200"></canvas>
+      </div>
+
+      <div class="board-wrapper">
+        <canvas id="canvas2" width="500" height="200"></canvas>
+      </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    let c1 = document.getElementById("canvas1").getContext("2d");
+    c1.fillStyle = "rgba(255,165,0,0.6)";
+    c1.fillRect(0, 0, 150, 150);
+    c1.fillStyle = "rgba(255,171,242,0.6)";
+    c1.fillRect(30, 30, 150, 150);
+    c1.fillStyle = "rgba(171,207,255,0.6)";
+    c1.fillRect(60, 60, 150, 150);
+
+
+    let c2 = document.getElementById("canvas2").getContext("2d");
+    c2.strokeStyle = "red";
+    c2.setLineDash([15,5]);
+    c2.strokeRect(40, 40, 100, 100);
+
+    c2.strokeStyle = "blue";
+    c2.setLineDash([2,5,6]);
+    c2.strokeRect(180, 40, 100, 100);
+
+    c2.strokeStyle = "green";
+    c2.setLineDash([2,2]);
+    c2.strokeRect(320, 40, 100, 100);
+  </script>
+</body>
+</html>

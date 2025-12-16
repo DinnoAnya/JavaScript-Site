@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Слава Україні</title>
+  <link rel="stylesheet" href="css/Task.css" />
+  <style>
+    .greeting {
+      margin: 4px 0;
+      font-weight: 600;
+    }
+    .answer {
+      margin-top: 12px;
+      font-size: 1.2rem;
+      color: var(--blue-dark);
+      font-weight: 700;
+    }
+    .board {
+      min-height: 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <nav class="site-nav" aria-label="Primary"><h1 class="brand-name"> <a href="index.html">На головну</a></h1></nav>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#AboutMe">Про мене</a></li>
+        <li><a href="Projects1.html">Проєкти</a></li>
+        <li><a href="#contact">Контакти</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="canvas"  id="app">
+    <div class="board">
+      <aside class="sidebar">
+        <h2 class="sidebar-title">Завдання</h2>
+        <nav>
+          <ul class="task-list">
+            <li class="task"><a href="Task1.html" class="task-link">Принцеси</a></li>
+            <li class="task"><a href="Task4.html" class="task-link">Сезон</a></li>
+            <li class="task"><a href="Task5.html" class="task-link">Вікторина</a></li>
+            <li class="task"><a href="Task6.html" class="task-link">Ялинка</a></li>
+            <li class="task"><a href="Task11.html" class="task-link">Населення</a></li>
+            <li class="task"><a href="Task13.html" class="task-link">Алфавіт</a></li>
+            <li class="task"><a href="Task14.html" class="task-link">Компліменти</a></li>
+            <li class="task"><a href="Task16.html" class="task-link">Слава Україні</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="content">
+        <header class="content-header">
+          <h1>Привітання "Слава Україні!"</h1>
+          <p class="task-desc">Введіть кількість разів, щоб побачити повторення.
+            <br> (При значенні більше 17 сторінка трохи ламається на ноуті/комп'ютері). 
+            <br> Не рекомендую використовуват ивеликі значення
+          </p>
+        </header>
+
+        <div class="controls">
+          <input id="greetingsCount" type="number" class="input" placeholder="Скільки разів?" min="1">
+          <button class="btn" onclick="printGreetings()">Показати</button>
+        </div>
+
+        <div class="result-area" id="resultBox">
+          <div id="greetingsResult" class="placeholder">Результат з’явиться тут</div>
+        </div>
+      </section>
+
+      <script>
+        function printGreetings() {
+          const greetings = +document.getElementById("greetingsCount").value;
+          let output = "";
+
+          if (isNaN(greetings) || greetings <= 0) {
+            document.getElementById("greetingsResult").innerText = "Введіть додатне число!";
+            return;
+          }
+
+          for (let count = 1; count <= greetings; count++) {
+            output += `<p class="greeting">${count}) Слава Україні!</p>`;
+          }
+
+          let lastNum = greetings % 10;
+          let word;
+
+          if (greetings >= 11 && greetings <= 14) {
+            word = "разів";
+          } else if (lastNum === 1) {
+            word = "раз";
+          } else if (lastNum >= 2 && lastNum <= 4) {
+            word = "рази";
+          } else {
+            word = "разів";
+          }
+
+          output += `<p class="answer">Героям слава! ${greetings} ${word}</p>`;
+
+          document.getElementById("greetingsResult").innerHTML = output;
+        }
+      </script>
+  </body>
+</html>
